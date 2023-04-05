@@ -1,6 +1,16 @@
 import Head from 'next/head'
+import { useState } from 'react'
 
 export default function Home() {
+  const [data, setData] = useState()
+  const handleClick = async () => {
+    console.log('clicked')
+    const res = await fetch('/.netlify/functions/get-hello')
+    const data = await res.json()
+    console.log(data)
+    setData(data)
+  }
+
   return (
     <>
       <Head>
@@ -11,7 +21,15 @@ export default function Home() {
       </Head>
       <main>
         <h1>hello world</h1>
-        <p>asdsad</p>
+
+        <br />
+        <br />
+        <hr />
+        <br />
+        <br />
+        <button onClick={handleClick}>Click</button>
+
+        {data && JSON.stringify(data, null, 2)}
       </main>
     </>
   )
