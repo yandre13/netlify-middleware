@@ -1,6 +1,4 @@
-import { Context } from 'https://edge.netlify.com'
-
-const handler = async (request: Request, context: Context) => {
+const handler = async (request, context) => {
   console.log('Hello from the console!')
   console.log('Request:', request)
   console.log('Context:', context)
